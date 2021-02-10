@@ -1,0 +1,1 @@
+This is the repository of all the lab assignments done by the B.Tech (2022 batch) in their 6th semester.
