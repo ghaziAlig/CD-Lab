@@ -5,36 +5,36 @@ given string is identifier or not.
 
 
 #include <stdio.h>
-#include <string.h>
 #include <ctype.h>
 
-int main(int argc, char const *argv[])
+int main()
 {
-	int count=0, k;
-	char str[20], ch;
+    int count=0, k;
+    char str[20], ch;
 
-	printf("\nEnter a string=>   ");
-	scanf("%s", str);
-	ch = str[0];
+    printf("\nEnter a string=>   ");
+    scanf("%s", str);
+    ch = str[0];
 
-	if (k=isalpha(ch) || ch==95)
-	{
-		count++;
+    k = isalpha(ch) || ch == 95;
+    if (k)
+    {
+        count++;
 
-		for (int i=1; str[i] != '\0'; ++i)
-		{
-			if (isalnum(str[i]) || ch==95)
-			{
-				count++;
-			}
-		}
+        for (int i=1; str[i] != '\0'; ++i)
+        {
+            if (isalnum(str[i]) || ch==95)
+            {
+                count++;
+            }
+        }
 
-	}
+    }
 
-	if (count > 5)
-		printf("\nThe entered string is an 'identifier'\n\n");
-	else
-		printf("\nThe entered string is not an 'identifier'\n\n");
+    if (count > 0)
+        printf("\nThe entered string is an 'identifier'\n\n");
+    else
+        printf("\nThe entered string is not an 'identifier'\n\n");
 
-	return 0;
+    return 0;
 }
