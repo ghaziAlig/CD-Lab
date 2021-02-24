@@ -11,7 +11,7 @@ Write a C program to implement Lexical Analyzer.
 
 void openingMessage()
 {
-    printf("\n#$#$#$#$#$#$#$#$#$#$#$#$#$#$  LEXICAL ANALYSER  $#$#$#$#$#$#$#$#$#$#$#$#$#$#\n\n");
+    printf("\n#$#$#$#$#$#$#$#$#$#$#$#$#$#$  LEXICAL  ANALYSER  $#$#$#$#$#$#$#$#$#$#$#$#$#$#\n\n");
 }
 
 void closingMessage()
@@ -137,7 +137,7 @@ void analyse(char* str)
     int left = 0, right = 0;
     int len = strlen(str);
 
-    printf("\n");
+    printf("\n\n");
 
     while (right <= len && left <= right) {
         if (delimiter(str[right]) == false)
@@ -178,14 +178,50 @@ void analyse(char* str)
 // Main Function
 void main()
 {
-
-    char str[50];
-
     openingMessage();
-    printf("Enter a string to perform lexical analysis==>>   ");
-    scanf("%[^\n]%*c", str);
 
-    analyse(str); // calling the analyse function
+    char str[500];
+
+    FILE *fptr;
+
+    char filename[100], c;
+
+    printf("Enter the name of the file for lexical analysis==>>   ");
+    scanf("%s", filename);
+
+    // Open file
+    fptr = fopen(filename, "r");
+
+/*    printf("Enter a string to perform lexical analysis==>>   ");
+    scanf("%[^\n]%*c", str);*/
+
+    if (fptr == NULL)
+    {
+        printf("Cannot open file \n");
+        exit(0);
+    }
+
+
+    // Read contents from file
+/*    c = fgetc(fptr);
+    while (c != EOF)
+    {
+        printf ("%c", c);
+        c = fgetc(fptr);
+    }*/
+
+    c = fgetc(fptr);
+    while (c != EOF)
+    {
+        fscanf(fptr, "%s", str);
+
+        analyse(str);
+
+        c = fgetc(fptr);
+    }    
+
+
+//    analyse(str); // calling the analyse function
 
 /*    printf("\n\nDo you want to run the program again???\nPress '1' for yes, any other key to exit.");
     int ch;
@@ -197,6 +233,8 @@ void main()
         default: closingMessage();
             break;
     }*/
+
+    fclose(fptr);
 
     closingMessage();
 
