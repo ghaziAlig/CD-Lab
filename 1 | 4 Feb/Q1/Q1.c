@@ -1,11 +1,5 @@
 /*
-Q1: Write a C program to read a file and display
-a) Number of characters
-b) Number of digits
-c) Number of spaces 
-d) Number of lines
-e) Number of special characters
-f) Number of alphabet
+Q1: Write a program to derive the predictive parse table.
 */
 
 
